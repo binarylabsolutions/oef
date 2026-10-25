@@ -31,6 +31,12 @@ This folder is the planning half of the repo. Platform code will live alongside 
 | [20-legal-and-payments.md](20-legal-and-payments.md) | Registering the non-profit, charity and tax rules, foreign money, paying people, payment options, the automatic ledger, costs and timeline | Founder, core team |
 | [21-university-partnerships.md](21-university-partnerships.md) | How we partner with universities: the exchange, Studio Fellows programme, workshops, events, final-year projects | Core team, university partners |
 
+## Curriculum
+
+| Doc | Covers |
+| --- | --- |
+| [curriculum/README.md](curriculum/README.md) | Software engineering curriculum proposal for any university: seven papers and the board deck |
+
 ## Research
 
 | Doc | Covers |
