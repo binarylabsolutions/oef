@@ -14,4 +14,4 @@ A proposal for a software engineering degree in the AI era, written for any univ
 | [06-shared-tooling-standard.md](06-shared-tooling-standard.md) | The four shared tools, build order, and the free-for-students, paid-for-teacher-training model |
 | [07-faculty-video-programme.md](07-faculty-video-programme.md) | Students ask, faculty answer at a whiteboard, students produce the videos |
 
-The board deck that presents the whole argument lives at <https://claude.ai/artifact/PRM7iwJBUxJYRowWpQRXvo>.
+The board deck that presents the whole argument is [board-deck.html](board-deck.html): open it in a browser and use the arrow keys or space to move, F for fullscreen. The live version lives at <https://claude.ai/artifact/RUnyRgcUBVKa67p9Rod5SX>.
