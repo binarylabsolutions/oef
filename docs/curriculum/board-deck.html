@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Engineering Education in the AI Era — Board Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ink:#14213D; --paper:#FBFBF8; --paper2:#F1EFE9; --line:#E1DED4;
+    --body:#4A5568; --accent:#B04A22; --accent-dk:#E0A87C; --card-dk:#1D2C4E;
+    --muted:#7A8698; --muted-dk:#8A99B0; --body-dk:#C7D0DE; --sub-dk:#B9C4D4;
+    --serif:'EB Garamond', Georgia, serif;
+    --sans:'IBM Plex Sans', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#0d1524;overflow:hidden;font-family:var(--sans)}
+  #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+  #canvas{width:1920px;height:1080px;position:relative;transform-origin:center center;flex:none}
+  .slide{
+    position:absolute;inset:0;padding:128px 128px 160px;
+    display:none;flex-direction:column;justify-content:space-between;gap:48px;
+    background:var(--paper);color:var(--ink);font-size:32px;line-height:1.4;
+  }
+  .slide.active{display:flex}
+  .slide.alt{background:var(--paper2)}
+  .slide.dark{background:var(--ink);color:var(--paper)}
+  h1{font-family:var(--serif);font-size:112px;font-weight:600;line-height:1.05;max-width:1560px}
+  h2{font-family:var(--serif);font-size:74px;font-weight:600;line-height:1.1;max-width:1560px}
+  h3{font-size:34px;font-weight:600;line-height:1.25}
+  p{line-height:1.45}
+  .eyebrow{font-size:26px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--accent)}
+  .dark .eyebrow{color:var(--accent-dk)}
+  .lede{font-size:34px;color:var(--body);max-width:1500px}
+  .dark .lede{color:var(--sub-dk)}
+  .stack{display:flex;flex-direction:column;gap:22px}
+  .row{display:flex;gap:24px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  .card{
+    flex:1;display:flex;flex-direction:column;gap:14px;
+    background:#fff;padding:38px;border:1px solid var(--line);border-radius:16px;
+  }
+  .card p{font-size:28px;color:var(--body)}
+  .card.tight p{font-size:26px}
+  .card.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .card.ink h3{color:var(--accent-dk)}
+  .card.ink p{color:var(--body-dk)}
+  .dark .card{background:var(--card-dk);border:none;color:var(--paper)}
+  .dark .card h3{color:var(--accent-dk)}
+  .dark .card p,.dark .card li{color:var(--body-dk)}
+  .num{font-size:30px;font-weight:600;color:var(--accent)}
+  .card.ink .num{color:var(--accent-dk)}
+  .chip{font-size:28px;font-weight:500;background:#fff;padding:24px;border:1px solid #DFDBD0;border-radius:12px;text-align:center}
+  .lane{display:flex;gap:16px;align-items:center}
+  .lane .label{width:300px;font-size:28px;font-weight:600;flex:none}
+  .lane .bar{flex:1;font-size:28px;background:#fff;padding:26px;border:1px solid #DFDBD0;border-radius:12px}
+  .lane .bar.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .lane .spacer{width:380px;flex:none}
+  .lane .note{flex:1;font-size:26px;color:var(--body);line-height:1.35}
+  table{border-collapse:collapse;width:100%;font-size:28px;border:1px solid #DFDBD0;border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:18px 22px;border-bottom:1px solid #E6E2D8}
+  th{background:var(--paper2);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:28px}
+  li{padding-left:30px;position:relative;line-height:1.4}
+  li::before{content:"";position:absolute;left:0;top:14px;width:12px;height:2px;background:currentColor;opacity:.5}
+  .note{font-size:30px;line-height:1.45;max-width:1560px}
+  .foot{position:absolute;left:128px;bottom:64px;font-size:24px;color:var(--muted)}
+  .dark .foot{color:var(--muted-dk)}
+  #hud{position:fixed;right:22px;bottom:18px;font-size:14px;color:#64748b;font-family:var(--sans);letter-spacing:.5px}
+  #help{position:fixed;left:22px;bottom:18px;font-size:14px;color:#475569}
+</style>
+</head>
+<body>
+<div id="stage"><div id="canvas">
+
+  <!-- 1 -->
+  <section class="slide dark active">
+    <p class="eyebrow">Curriculum board briefing</p>
+    <div class="stack">
+      <h1>Software engineering education in the AI era</h1>
+      <p class="lede" style="max-width:1340px">Keep coding as a literacy. Move systems knowledge and engineering judgement to the centre. Prove both with a record employers can verify.</p>
+    </div>
+    <p style="font-size:24px;color:var(--muted-dk)">25 October 2026</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="stack">
+      <p class="eyebrow">The shift</p>
+      <h2>Every abstraction shift moves the value upward</h2>
+    </div>
+    <div class="row">
+      <div class="card"><h3>Assembly to compilers</h3><p>Hand-tuning machine code stopped being the price of entry. The work moved up a level, and almost nobody reads assembly now.</p></div>
+      <div class="card"><h3>Painting to photography</h3><p>Composition and light kept their value. Brush control did not. A new craft formed around deciding what image to make.</p></div>
+      <div class="card ink"><h3>Code to language</h3><p>The scarce skills become specifying what to build, choosing an approach and defending it, and verifying the result.</p></div>
+    </div>
+    <p class="foot">1 &middot; Why change</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide alt">
+    <div class="stack">
+      <h2>The case does not depend on any prediction about AI</h2>
+      <p class="lede">Graduates frequently cannot write working code after four years, and most have never met the systems knowledge the job requires. The curriculum already fails at its own target.</p>
+    </div>
+    <div class="grid4">
+      <p class="chip">Containers</p><p class="chip">Cloud</p><p class="chip">Load balancing</p><p class="chip">Queues</p>
+      <p class="chip">Caching</p><p class="chip">API standards</p><p class="chip">Authentication</p><p class="chip">Vulnerabilities</p>
+      <p class="chip">Stress testing</p><p class="chip">Databases</p><p class="chip">CI and delivery</p><p class="chip">Linux and scripting</p>
+    </div>
+    <p class="foot">2 &middot; Why change</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="stack">
+      <p class="eyebrow">What to teach</p>
+      <h2>Six principles decide every course</h2>
+    </div>
+    <div class="grid3">
+      <div class="card tight"><h3>Coding stays, as literacy</h3><p>Year one is hand-written and unassisted. You cannot judge code you never struggled to write.</p></div>
+      <div class="card tight"><h3>Judgement is the core</h3><p>The defensible skill is the whiteboard defence: why this design, and what breaks if it is wrong.</p></div>
+      <div class="card tight"><h3>Specs outrank code</h3><p>Tests prove only that code matches the spec. A wrong spec passes every test.</p></div>
+      <div class="card tight"><h3>Depth over coverage</h3><p>Fewer topics, each to production standard. Memorised terms reproduce the problem we have.</p></div>
+      <div class="card tight"><h3>Categories, not brands</h3><p>Teach caching, not one vendor. Brands are the examples; they are never the syllabus.</p></div>
+      <div class="card tight ink"><h3>Assemble before you build</h3><p>Use battle-tested libraries for solved problems, and know why hand-rolling auth is a defect.</p></div>
+    </div>
+    <p class="foot">3 &middot; What to teach</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide alt">
+    <div class="stack">
+      <h2>One generalist degree, with specialization as a spine</h2>
+      <p class="lede" style="font-size:30px">Not two or three swapped courses in the final year, which leaves no room for prerequisites.</p>
+    </div>
+    <div class="stack" style="gap:16px">
+      <div class="lane"><p class="label">Core CS</p><p class="bar">Semesters 1&ndash;8 &middot; fundamentals, systems, networks, data, security, cloud</p></div>
+      <div class="lane"><p class="label">Track</p><div class="spacer"></div><p class="bar ink">Semesters 3&ndash;8 &middot; one track course per semester, two in year 4</p></div>
+      <div class="lane"><p class="label">Practice</p><p class="bar">Semesters 1&ndash;8 &middot; workshops, build-your-own projects, one long product project</p></div>
+      <div class="lane"><p class="label">General education</p><p class="bar" style="flex:none;width:420px">Semesters 1&ndash;2 &middot; repurposed</p><p class="note">Communication becomes technical writing; mathematics leans discrete, linear algebra and statistics; accounting becomes software economics.</p></div>
+    </div>
+    <p class="foot">4 &middot; What to teach</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="stack">
+      <h2>Every topic is taught in the same five parts</h2>
+      <p class="lede" style="font-size:30px">This is what separates knowing a term from being able to use it.</p>
+    </div>
+    <div class="grid5">
+      <div class="card tight" style="padding:32px"><p class="num">01</p><h3 style="font-size:32px">The concept</h3><p>What it is and what problem it solves, at the category level.</p></div>
+      <div class="card tight" style="padding:32px"><p class="num">02</p><h3 style="font-size:32px">Good and bad</h3><p>Two artefacts side by side, with the reasoning behind each.</p></div>
+      <div class="card tight" style="padding:32px"><p class="num">03</p><h3 style="font-size:32px">How it fails</h3><p>The production failure mode, not the happy path.</p></div>
+      <div class="card tight" style="padding:32px"><p class="num">04</p><h3 style="font-size:32px">The caveats</h3><p>Every technology&rsquo;s weak side, stated plainly.</p></div>
+      <div class="card tight ink" style="padding:32px"><p class="num">05</p><h3 style="font-size:32px">The lab</h3><p>The student breaks it, fixes it, or defends the choice.</p></div>
+    </div>
+    <p class="note"><b>The habit is the transferable part.</b> A student who knows one database&rsquo;s limitations will interrogate the next technology the same way, including ones that do not exist yet.</p>
+    <p class="foot">5 &middot; What to teach</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide alt">
+    <div class="stack">
+      <p class="eyebrow">How to run it</p>
+      <h2>Theory becomes automatic only through repetition</h2>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3 style="font-size:36px">Workshops</h3><p>Twenty to fifty over four years. At most five concepts each, a fixed assessment, and a score.</p></div>
+      <div class="card"><h3 style="font-size:36px">Build-your-own projects</h3><p>An HTTP server, a small database, a job queue. Fifty to a hundred on the list, graded by tests.</p></div>
+      <div class="card"><h3 style="font-size:36px">One long product project</h3><p>Carried across semesters, handed out as tickets. Branching, review, release, handover.</p></div>
+      <div class="card"><h3 style="font-size:36px">GitHub from semester 1</h3><p>All coursework in it. Count tests passed and projects finished, never commit streaks.</p></div>
+    </div>
+    <p class="foot">6 &middot; How to run it</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide dark">
+    <div class="stack">
+      <h2>Assess what cannot be outsourced</h2>
+      <p class="lede" style="font-size:30px">AI makes take-home work trivial to fake. Diagnosis, review and defence are not.</p>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3 style="font-size:36px">Break-fix drills</h3><p>A working system with a fault planted in it. Diagnose and fix under time pressure, repeatedly, until it is reflex.</p></div>
+      <div class="card"><h3 style="font-size:36px">Reviewing AI code</h3><p>Pull requests with planted defects. Finding the problem is the graded skill, not writing the code.</p></div>
+      <div class="card"><h3 style="font-size:36px">Whiteboard defence</h3><p>The central exam. Justify the design, and challenge the parts that are wrong.</p></div>
+      <div class="card"><h3 style="font-size:36px">No-AI workshops</h3><p>Assessments run unassisted, though diagrams and architecture views are allowed, as they are in real work.</p></div>
+    </div>
+    <p class="foot">7 &middot; How to run it</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="stack">
+      <h2>A record employers can verify</h2>
+      <p class="lede" style="font-size:30px">Alongside the transcript: every workshop, its concepts, its score, each entry linked to the artefact the student produced.</p>
+    </div>
+    <table>
+      <tr><th style="width:34%">Workshop</th><th style="width:40%">Concepts assessed</th><th style="width:14%">Score</th><th style="width:12%">Verify</th></tr>
+      <tr><td>Containers</td><td>Image layers, build and runtime split, entrypoints</td><td>4 / 5</td><td>WS-2871</td></tr>
+      <tr><td>Identity</td><td>Sessions, tokens, federated identity, rotation</td><td>5 / 5</td><td>WS-2903</td></tr>
+      <tr><td>Caching</td><td>When to cache, invalidation, failure behaviour</td><td>3 / 5</td><td>WS-3014</td></tr>
+      <tr><td>Load testing</td><td>Test design, reading results, bottleneck analysis</td><td>4 / 5</td><td>WS-3188</td></tr>
+    </table>
+    <p class="note"><b>The record is worth nothing if everyone scores full marks.</b> Strictness is enforced by the tooling, not left to individual instructors, and scores are issued in an open format so students can attach them anywhere.</p>
+    <p class="foot">8 &middot; How to run it</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide alt">
+    <div class="stack">
+      <h2>The infrastructure is already free</h2>
+      <p class="lede" style="font-size:30px">The university does not need to fund this. It needs someone to apply as an institution.</p>
+    </div>
+    <table style="font-size:27px">
+      <tr><th style="width:26%">Programme</th><th style="width:48%">What it provides</th><th style="width:26%">Who applies</th></tr>
+      <tr><td>AWS Academy</td><td>Free ready-to-teach curriculum plus Learner Lab sandboxes with 100+ services</td><td>The institution</td></tr>
+      <tr><td>Google Cloud for faculty</td><td>Up to $100 per teaching staff member, up to $50 per student, per course</td><td>Faculty</td></tr>
+      <tr><td>Azure for Students</td><td>$100 for 12 months, renewable, no credit card required</td><td>Each student</td></tr>
+      <tr><td>GitHub Education</td><td>Student Pack, Classroom autograding, 180 Codespaces core hours a month</td><td>Students and faculty</td></tr>
+      <tr><td>On-campus AI lab</td><td>Self-hosted open coding models on a few GPU workstations</td><td>The university, after the pilot</td></tr>
+    </table>
+    <p class="note"><b>The AI lab is the one investment worth making.</b> Hardware serves every cohort, where credits expire yearly &mdash; and a departmental AI lab is something the university can point to in admissions and press.</p>
+    <p class="foot">9 &middot; How to run it &middot; figures as published 25 Oct 2026</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="stack">
+      <p class="eyebrow">The main risk</p>
+      <h2>Most faculty have not run production systems</h2>
+      <p class="lede" style="font-size:30px">A curriculum that depends on the instructor being the expert will not survive the timetable. Three measures remove that dependency.</p>
+    </div>
+    <div class="row">
+      <div class="card"><h3>Expertise in the materials</h3><p>Every scenario ships with its answer key, its reasoning and its marking criteria. The instructor assesses against a rubric.</p></div>
+      <div class="card"><h3>Practitioners in the labs</h3><p>Working engineers, including remote contributors, run the practical sessions. Faculty carry the theory they already teach well.</p></div>
+      <div class="card"><h3>Train faculty first</h3><p>A summer cohort takes the same workshops and the same assessments before the students start.</p></div>
+    </div>
+    <p class="foot">10 &middot; How to run it</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide dark">
+    <div class="stack">
+      <p class="eyebrow">The ask</p>
+      <h2>Approve one pilot elective, and judge it on evidence</h2>
+      <p class="lede" style="font-size:30px">Roughly thirty students. Faculty training cohort first, then the elective, then this board reviews results before anything reaches the core degree.</p>
+    </div>
+    <div class="row">
+      <div class="card">
+        <h3 style="font-size:34px">Measured on</h3>
+        <ul>
+          <li>Break-fix scores, start against end</li>
+          <li>Whiteboard defence marks</li>
+          <li>Workshops passed per student</li>
+          <li>Projects completed with tests passing</li>
+          <li>Placement against a comparison group</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:34px">Costs this semester</h3>
+        <ul>
+          <li>No new budget line</li>
+          <li>Cloud and AI from free education programmes</li>
+          <li>Project list and autograding on existing tools</li>
+          <li>One elective slot and one instructor</li>
+          <li>Faculty time for the summer cohort</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot">11 &middot; The decision &middot; detail in the seven companion papers</p>
+  </section>
+
+</div></div>
+
+<div id="hud"></div>
+<div id="help">&larr; &rarr; / space to move &middot; F fullscreen</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var canvas = document.getElementById('canvas');
+  var hud = document.getElementById('hud');
+  var i = 0;
+
+  function fit(){
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    canvas.style.transform = 'scale(' + s + ')';
+  }
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(el, k){ el.classList.toggle('active', k === i); });
+    hud.textContent = (i + 1) + ' / ' + slides.length;
+    if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === ' ' || k === 'PageDown' || k === 'Enter'){ e.preventDefault(); show(i + 1); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace'){ e.preventDefault(); show(i - 1); }
+    else if (k === 'Home'){ e.preventDefault(); show(0); }
+    else if (k === 'End'){ e.preventDefault(); show(slides.length - 1); }
+    else if (k === 'f' || k === 'F'){
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+  document.addEventListener('click', function(e){
+    show(e.clientX < window.innerWidth * 0.25 ? i - 1 : i + 1);
+  });
+  var x0 = null;
+  document.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+    x0 = null;
+  });
+  window.addEventListener('resize', fit);
+  fit();
+  var start = parseInt((location.hash || '#1').slice(1), 10);
+  show(isNaN(start) ? 0 : start - 1);
+})();
+</script>
+</body>
+</html>
