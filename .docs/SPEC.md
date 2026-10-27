@@ -1,0 +1,43 @@
+# Spec: Open Education Studio (edu)
+
+- **What it is:** planning docs for a non-profit studio ("Open Education Studio", working name; motto "Ilm sab ke liye")
+  - Gives Pakistani education creators a free backend: volunteer contributors, tools, systems
+  - Repo: `binarylabsolutions/oef`; docs only, platform code later; GitHub Pages serves `master`
+- **Foundations** (`docs/01`–`03`, `10`)
+  - Vision, mission, 10-year goals (by 2036)
+  - Charter: seven tenets (free forever, credit everyone + disclose AI, own mistakes, teach don't sell, open by default, free to leave, respect time)
+  - Learning in the AI era: curiosity ladder for short-form
+- **Operations** (`docs/04`, `14`–`19`)
+  - Roles, pledges, task matching, levels, credits
+  - Creator admissions: three support levels, routes in (traction, vouch, application)
+  - Content workflow: idea → published, phases with gates, GitHub-style review, weekly batches
+  - Open asset library: licences, PR-style asset review
+  - Contributors: onboarding, hidden skills, creator pods, guilds
+  - Project management: PM vs producer, capacity, pipeline green zone
+  - Supporting the team: Meet the team pages, then contributor fund (after registration)
+- **Platform design** (`docs/05`, `06`)
+  - Control panel: off-the-shelf tools first; flows for sign-up, pledges, tasks, hours, quality, credits, content workflow, PM
+  - Technology for creators, teachers, students
+- **Strategy** (`docs/07`, `11`–`13`)
+  - Lane: Urdu curiosity content; link to lesson libraries, don't duplicate
+  - Publish on TikTok, YouTube (Shorts + long), Facebook, Instagram, WhatsApp channels
+  - Roadmap gates: Pilot → Small studio → Open studio → Scale
+  - Six-year plan; risks and gaps; impact framework
+- **Money and law** (`docs/08`, `09`, `20`)
+  - Public ledger: every rupee published; no donation until ledger is live
+  - Paid experts: vetting, rates, creator-funded first
+  - Legal: Section 42 non-profit (Lahore), charity registration before fundraising
+- **Partners** (`docs/21`, `docs/partners/`)
+  - University partnerships: Studio Fellows, workshops, events, final-year projects
+  - Lahore Garrison University: proposal, draft pilot agreement
+- **Creators** (`docs/creators/<handle>/`): proposal + growth plan each
+  - Rohail Sarfraz
+- **Curriculum proposal** (`docs/curriculum/`): AI-era software engineering degree, any university
+  - Seven papers: main paper, course outlines, job-ready skills, infrastructure, industry partnership, shared tooling, faculty video programme
+  - Board deck: `board-deck.html` (11 slides, arrow keys, F fullscreen)
+    - Live: https://binarylabsolutions.github.io/oef/docs/curriculum/board-deck.html
+- **Research** (`docs/research/`): education YouTube landscape, Pakistan education context
+- **Rules**
+  - One topic per file, numbered in reading order
+  - Docs state the working position; undecided questions only in `docs/open-questions.md`
+  - Dates in full (30 Sep 2026)
